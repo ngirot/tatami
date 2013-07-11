@@ -393,7 +393,7 @@
                 </legend>
                 <div class="controls geoLocalization">
                     <label class="checkbox">
-                        <input id="statusPrivate" name="statusPrivate" type="checkbox" value="true"> <span class="glyphicon glyphicon-map-marker"></span> <fmt:message key="tatami.status.geoLocalization"/> <span><@= geoLocalization @></span>
+                        <input id="statusGeoLocalization" name="statusGeoLocalization" type="checkbox" value="true"> <span class="glyphicon glyphicon-map-marker"></span> <fmt:message key="tatami.status.geoLocalization"/> <span><@= currentGeoLocalization @></span>
                     </label>
                 </div>
                  <div class="controls groups">

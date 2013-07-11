@@ -85,7 +85,7 @@
             'click .status-action-announce-cancel': 'announceActionCancel',
             'click .status-action-delete': 'deleteAction',
             'click .status-action-delete-confirm': 'deleteActionConfirm',
-            'click .status-action-delete-cancel': 'deleteActionCancel',
+            'click .status-action-delete-cancel': 'deleteActionCancel'
         },
         onRender: function(){
             this.$el.find('> #current').toggleClass('favorite', this.model.get('favorite'));

@@ -21,6 +21,7 @@
 
             this.initFileUpload();
             this.initFileUploadBind();
+            this.initGeoLocalizationBind();
 
             this.$el.find('.groups').toggleClass('hide', Tatami.app.groups.length === 0 );
 
@@ -34,12 +35,22 @@
             if (navigator.geolocation)   {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var geoLocalization = position.coords.latitude +', ' + position.coords.longitude;
-                    self.model.set('geoLocalization', geoLocalization);
                     currentGeoLocalization = geoLocalization;
                 });
             }
         },
 
+        initGeoLocalizationBind: function() {
+            var self = this;
+
+            self.$el.find('#statusGeoLocalization').bind('click', function(){
+                if(self.model.get('geoLocalization')) {
+                    self.model.set('geoLocalization', '');
+                } else {
+                    self.model.set('geoLocalization', currentGeoLocalization);
+                }
+            });
+        },
 
         initFileUpload: function(){
             var self = this;
@@ -207,7 +218,6 @@
                         replyTo: replyTo
                     });
                     Tatami.app.user.set('statusCount', Tatami.app.user.get('statusCount') + 1);
-                    self.model.set('geoLocalization', currentGeoLocalization);
                 },
                 error: function (model, response) {
                 }
