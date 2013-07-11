@@ -53,6 +53,8 @@ public class StatusDTO implements Serializable {
 
     private String groupName;
 
+    private String geoLocalization;
+
     private boolean publicGroup;
 
     private Collection<Attachment> attachments;
@@ -281,6 +283,14 @@ public class StatusDTO implements Serializable {
         this.sharedByUsername = sharedByUsername;
     }
 
+    public String getGeoLocalization() {
+        return geoLocalization;
+    }
+
+    public void setGeoLocalization(String geoLocalization) {
+        this.geoLocalization = geoLocalization;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -302,14 +312,15 @@ public class StatusDTO implements Serializable {
         return "StatusDTO{" +
                 "statusId='" + statusId + '\'' +
                 ", timelineId='" + timelineId + '\'' +
-                ", type='" + type + '\'' +
+                ", type=" + type +
                 ", username='" + username + '\'' +
                 ", statusPrivate=" + statusPrivate +
                 ", groupId='" + groupId + '\'' +
                 ", groupName='" + groupName + '\'' +
+                ", geoLocalization='" + geoLocalization + '\'' +
                 ", publicGroup=" + publicGroup +
-                ", attachmentIds=" + attachmentIds +
                 ", attachments=" + attachments +
+                ", attachmentIds=" + attachmentIds +
                 ", content='" + content + '\'' +
                 ", statusDate=" + statusDate +
                 ", iso8601StatusDate='" + iso8601StatusDate + '\'' +

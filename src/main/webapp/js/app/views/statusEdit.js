@@ -2,6 +2,7 @@
     var StatusEdit = Backbone.Marionette.Layout.extend({
         initialize: function(){
             this.model = new Tatami.Models.PostStatus();
+            this.initGeoLocalization();
         },
         onRender: function(){
             _.defaults(this.options, {
@@ -25,6 +26,12 @@
 
             this.$el.modal('show');
         },
+
+        initGeoLocalization: function() {
+            var self = this;
+            self.model.geoLocate();
+        },
+
 
         initFileUpload: function(){
             var self = this;

@@ -22,6 +22,8 @@ public class Status extends AbstractStatus {
 
     private Collection<Attachment> attachments;
 
+    private String geoLocalization;
+
     @NotNull
     @NotEmpty(message = "Content field is mandatory.")
     @Size(min = 1, max = 2048)
@@ -126,6 +128,14 @@ public class Status extends AbstractStatus {
         this.removed = removed;
     }
 
+    public String getGeoLocalization() {
+        return geoLocalization;
+    }
+
+    public void setGeoLocalization(String geoLocalization) {
+        this.geoLocalization = geoLocalization;
+    }
+
     @Override
     public String toString() {
         return "Status{" +
@@ -133,12 +143,13 @@ public class Status extends AbstractStatus {
                 ", statusPrivate=" + statusPrivate +
                 ", hasAttachments=" + hasAttachments +
                 ", attachments=" + attachments +
+                ", geoLocalization='" + geoLocalization + '\'' +
                 ", content='" + content + '\'' +
                 ", discussionId='" + discussionId + '\'' +
                 ", replyTo='" + replyTo + '\'' +
                 ", replyToUsername='" + replyToUsername + '\'' +
                 ", detailsAvailable=" + detailsAvailable +
                 ", removed=" + removed +
-                "} " + super.toString();
+                '}';
     }
 }

@@ -6,6 +6,7 @@
             groupId: '',
             attachmentIds: [],
             replyTo: '',
+            geoLocalization:'' ,
             statusPrivate: false
         },
 
@@ -19,7 +20,19 @@
 
         resetAttachments: function() {
             this.set('attachmentIds', []);
+        },
+
+        geoLocate: function() {
+            self = this;
+            if (navigator.geolocation)   {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var geoLocalization = position.coords.latitude +', ' + position.coords.longitude;
+                    self.set('geoLocalization', geoLocalization);
+                });
+            }
         }
+
+
     });
 
     Tatami.Models.PostStatus = PostStatus;

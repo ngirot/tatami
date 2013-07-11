@@ -386,6 +386,11 @@
                 <legend>
                     <fmt:message key="tatami.status.options"/>
                 </legend>
+                <div class="controls geoLocalization">
+                    <label class="checkbox">
+                        <input id="statusPrivate" name="statusPrivate" type="checkbox" value="true"> <span class="glyphicon glyphicon-lock"></span> <fmt:message key="tatami.status.geoLocalization"/> <span><@= geoLocalization @></span>
+                    </label>
+                </div>
                  <div class="controls groups">
                     <label class="control-label"><fmt:message key="tatami.group.name"/></label>
                     <select name="groupId">
