@@ -28,16 +28,19 @@
             this.$edit.typeahead(new Tatami.Suggester(this.$edit));
 
             this.$el.modal('show');
+            this.initMap();
         },
 
         initGeoLocalization: function() {
             var self = this;
+
             if (navigator.geolocation)   {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var geoLocalization = position.coords.latitude +', ' + position.coords.longitude;
                     currentGeoLocalization = geoLocalization;
                 });
             }
+
         },
 
         initGeoLocalizationBind: function() {
@@ -52,6 +55,30 @@
             });
         },
 
+
+        initMap: function() {
+            var geoLocalization = currentGeoLocalization;
+            console.debug(geoLocalization);
+            var latitude =       geoLocalization.split(',')[0].trim();
+            var longitude =   geoLocalization.split(',')[1].trim();
+
+            map = new OpenLayers.Map("basicMap");
+            var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+            var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+            var lonLat = new OpenLayers.LonLat(parseFloat(longitude),parseFloat(latitude)).transform( fromProjection, toProjection);
+            var mapnik         = new OpenLayers.Layer.OSM();
+            var position       = lonLat;
+            var zoom           = 12;
+
+            map.addLayer(mapnik);
+
+            var markers = new OpenLayers.Layer.Markers( "Markers" );
+            map.addLayer(markers);
+
+            console.debug(lonLat);
+            markers.addMarker(new OpenLayers.Marker(lonLat));
+            map.setCenter(position, zoom );
+        },
         initFileUpload: function(){
             var self = this;
             self.model.resetAttachments();

@@ -2,6 +2,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<script src="/js/vendor/OpenLayers.js"></script>
+
+
+
 <script type="text/template" id="TagsHeader">
     <h3>
       <span class="text-center"><strong>#<@= name @></strong></span>
@@ -396,6 +400,15 @@
                         <input id="statusGeoLocalization" name="statusGeoLocalization" type="checkbox" value="true"> <span class="glyphicon glyphicon-map-marker"></span> <fmt:message key="tatami.status.geoLocalization"/> <span><@= currentGeoLocalization @></span>
                     </label>
                 </div>
+                <div id="basicMap" style="height:250px; width:250px"></div>
+                <style type="text/css">
+                    html, body, #basicMap {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    }
+                </style>
+
                  <div class="controls groups">
                     <label class="control-label"><fmt:message key="tatami.group.name"/></label>
                     <select name="groupId">
