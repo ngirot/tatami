@@ -1,5 +1,7 @@
 (function(Backbone, _, Tatami){
     var StatusEdit = Backbone.Marionette.Layout.extend({
+        currentGeoLocalization : '',
+
         initialize: function(){
             this.model = new Tatami.Models.PostStatus();
             this.initGeoLocalization();
@@ -29,7 +31,13 @@
 
         initGeoLocalization: function() {
             var self = this;
-            self.model.geoLocate();
+            if (navigator.geolocation)   {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var geoLocalization = position.coords.latitude +', ' + position.coords.longitude;
+                    self.model.set('geoLocalization', geoLocalization);
+                    currentGeoLocalization = geoLocalization;
+                });
+            }
         },
 
 
@@ -199,6 +207,7 @@
                         replyTo: replyTo
                     });
                     Tatami.app.user.set('statusCount', Tatami.app.user.get('statusCount') + 1);
+                    self.model.set('geoLocalization', currentGeoLocalization);
                 },
                 error: function (model, response) {
                 }
