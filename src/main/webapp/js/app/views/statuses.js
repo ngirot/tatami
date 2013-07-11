@@ -85,7 +85,7 @@
             'click .status-action-announce-cancel': 'announceActionCancel',
             'click .status-action-delete': 'deleteAction',
             'click .status-action-delete-confirm': 'deleteActionConfirm',
-            'click .status-action-delete-cancel': 'deleteActionCancel'
+            'click .status-action-delete-cancel': 'deleteActionCancel',
         },
         onRender: function(){
             this.$el.find('> #current').toggleClass('favorite', this.model.get('favorite'));
@@ -116,7 +116,7 @@
             }
 
             return false;
-        }, 
+        },
         showDetails: function(){
             currentModel = this.model;
             if (this.model.get('type') != 'STATUS' && this.model.get('type') != 'SHARE' && this.model.get('type') != 'ANNOUNCEMENT') {

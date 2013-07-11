@@ -100,6 +100,11 @@
             <@ } @>
         </div>
         <div id="status-content-container">
+            <@ if(geoLocalizationURL) { @>
+                <div class="pull-right text-right">
+                    <a  class="glyphicon glyphicon-map-marker" href="<@= geoLocalizationURL @>" target="_blank"></a>
+                </div>
+            <@ } @>
             <div class="pull-right text-right">
                 <abbr class="timeago" title="<@= iso8601StatusDate @>"><@= prettyPrintStatusDate @></abbr>
             </div>
@@ -388,7 +393,7 @@
                 </legend>
                 <div class="controls geoLocalization">
                     <label class="checkbox">
-                        <input id="statusPrivate" name="statusPrivate" type="checkbox" value="true"> <span class="glyphicon glyphicon-lock"></span> <fmt:message key="tatami.status.geoLocalization"/> <span><@= geoLocalization @></span>
+                        <input id="statusPrivate" name="statusPrivate" type="checkbox" value="true"> <span class="glyphicon glyphicon-map-marker"></span> <fmt:message key="tatami.status.geoLocalization"/> <span><@= geoLocalization @></span>
                     </label>
                 </div>
                  <div class="controls groups">
